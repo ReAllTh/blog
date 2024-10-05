@@ -4,6 +4,7 @@ title: 微积分知识点
 date: 2024-10-05 13:31:09 +0000
 tags: [数学]
 math: true
+toc: true
 ---
 
 ## 极限与连续
@@ -91,6 +92,7 @@ $$
 $$
 
 > 三角函数的导数推导过程中需要用到三角形和差角公式
+> 
 > $$
 > \begin{align*}
 >    & \sin(\alpha \pm \beta) = \sin\alpha \cos\beta \pm \cos\alpha \sin\beta \\
