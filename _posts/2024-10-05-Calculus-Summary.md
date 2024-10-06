@@ -7,6 +7,8 @@ math: true
 toc: true
 ---
 
+学习 [MIT-18.01](https://ocw.mit.edu/courses/18-01sc-single-variable-calculus-fall-2010/pages/syllabus/) 过程中做的笔记
+
 ## 极限与连续
 
 左极限：$ \lim\limits_{ x \to x_0^-} f(x) $
@@ -41,7 +43,7 @@ $$
 \end{align*}
 $$
 
-> 这两个极限需要用几何证明，当 $ \theta \to 0 $，曲线等同于直线，图示为 MIT-18.01 中对 $ \lim\limits_{x \to 0} \frac{\sin x}{x} = 1 $ 的几何证明
+> 这两个极限需要用几何证明，当 $ \theta \to 0 $，曲线等同于直线，图示为  中对 $ \lim\limits_{x \to 0} \frac{\sin x}{x} = 1 $ 的几何证明，
 > ![alt text](../assets/img/lim_cosx_proof.png)
 > ![alt text](../assets/img/lim_sinx_proof.png)
 
@@ -84,6 +86,7 @@ $$
     & (\cos x)' = - \sin x \\
     & (\tan x)' = \sec^2 x \\
     & (\sec x)' = \sec x \tan x \\
+    & (a^x)' = a^x\ln a \\
     & (e^x)' = e^x \\
     & (\ln x)' = \frac{1}{x} \\
     & (\arctan x)' = \frac{1}{1 + x^2} \\
@@ -118,8 +121,156 @@ $$
 
 ## 高阶导数
 
-即导数的导数
+含义：即导数的导数
 
 记号：$ f''(x) = \frac{\mathrm{d}\frac{\mathrm{d}f}{\mathrm{d}x}}{\mathrm{d}x} = \frac{\mathrm{d}}{\mathrm{d}x}\frac{\mathrm{d}f}{\mathrm{d}x} = \frac{\mathrm{d}}{\mathrm{d}x}\frac{\mathrm{d}}{\mathrm{d}x}f = (\frac{\mathrm{d}}{\mathrm{d}x})^2f = \frac{\mathrm{d}^2}{(\mathrm{d}x)^2}f = \frac{\mathrm{d}^2f}{\mathrm{d}x^2} = D^2f$
 
+## 隐函数求导
 
+## 隐函数
+
+含义：常见的形如 $ f(x) = \sin x $ 这样，能直接用含有自变量的算式表示的函数为显函数，而隐函数是形如 $ f(x, y) = 0 $ 这样的函数，比如 $ x^2 + y^2 = 1 $（单位圆的隐函数）
+
+## 求导
+
+可以利用链式法则对隐函数求导，对于那些不好确定显函数的方程，隐函数求导往往是效果很好，比如对单位圆的隐函数求 $ y'$：
+
+$$
+\begin{align*}
+    \frac{\mathrm{d}(x^2 + y^2)}{\mathrm{d}x} &= \frac{\mathrm{d}1}{\mathrm{d}x} \\
+    \frac{\mathrm{d}x^2}{\mathrm{d}x} + \frac{\mathrm{d}y^2}{\mathrm{d}x} &= 0 \\
+    2x + \frac{\mathrm{d}y^2}{\mathrm{d}y}\frac{\mathrm{d}y}{\mathrm{d}x} &= 0 \\
+    2yy' &= -2x \\
+    y' &= \frac{-x}{y} \\
+    y' &= \frac{\mp x}{\sqrt{1 - x^2}}
+\end{align*}
+$$
+
+## 反函数求导
+
+### 反函数
+
+含义：如果 $ f(g(x)) = 1 $，则 $ f(x) $ 和 $ g(x) $ 互为对方的反函数
+
+几何意义：图像关于 $ y=x $ 轴对称
+
+记号：$ f^{-1}(x) $
+
+### 求导
+
+通过原函数的导数，我们可以求出其反函数（如果有的话）的导数
+
+> 不是所有函数都有反函数的，只有那些自变量和因变量能够一一对应的函数才会有反函数，这其实不难理解，对于 $ y(x) $，如果一个 $ x $ 可以对应多个 $ y $，那反过来，哪个 $ y $ 对应这个 $ x $ 呢？这个我们是无法确定的，所以这样的函数没有反函数
+
+比如求 $ (\tan^{-1}x)' $（其实就是 $ \arctan' x $）：
+
+$$
+\begin{align}
+    y &= \tan^{-1}x \\
+    \tan y &= x \\
+    (\sec^2 y)y'  &= 1 \\
+    y'  &= \cos^2 y \\
+    y'  &= \frac{1}{1 + x^2}
+\end{align}
+$$
+
+$ (4) \implies (5) $ 需要用点技巧，我们可以通过 $ (2) $ 作出下图：
+
+![alt text](../assets/img/tany_x.png)
+
+在图中用邻边比斜边可以得出 $ \cos y = \frac{1}{\sqrt{1 + x^2}} $
+
+## 指数函数求导
+
+## 指数函数
+
+含义：底数不变，指数改变的函数，比如 $ a^x(a \ne 0) $
+
+## 求导
+
+公式：$ (a^x)' = a^x\ln a $
+
+这个公式的证明不是很好理解，以下是过程，但是建议结合视频理解：
+
+对于 $ f(x) = a^x $，根据定义
+
+$$
+\begin{align}
+    f'(x) &= \lim\limits_{ \Delta x \to 0} \frac{ f(x + \Delta x) - f(x)}{\Delta x} \\
+    &= \lim\limits_{ \Delta x \to 0} \frac{ a^{x + \Delta x} - a^x}{\Delta x} \\
+    &= a^x\lim\limits_{ \Delta x \to 0} \frac{ a^{\Delta x} - 1}{\Delta x} \\
+    &= a^x\lim\limits_{ \Delta x \to 0} \frac{ a^{0 + \Delta x} - a^0}{\Delta x} \\
+    &= a^xf'(0)
+\end{align}
+$$
+
+> 对于 $ (8) $ 这种差商形式，我们应该总是想到导数的定义
+
+现在只需要知道 $ f'(0) $ 的值即可
+
+为了知道 $ f'(0) $ 的值，我们需要另外一个假设：假设存在一个数 $ e $，使 $ g'(x) = (e^x)'\big|_{x = 0} = 1 $
+
+但这里不能随意假设，假设之前我们需要证明 $ e $ 确实存在：
+
+$$
+\begin{align*}
+    f(x) &= a^x \\
+    f(kx) &= a^{kx} = (a^k)^x \xlongequal{令 b = a^x} b^x\\
+    (b^x)' &= [f(kx)]' = kf'(kx) \\
+    (b^x)' \big|_{x=0} &= kf'(0)
+\end{align*}
+$$
+
+当 $ k = \frac{1}{f'(0)} $ 时，$ (b^x)'\big|_{x=0} = kf'(0) = 1 $，此时 $ b = e $，也就是 e 确实存在，假设成立
+
+上面这部分证明过程从几何角度讲，也就是说对于任意的 $ f(x) = a^x $，我们把它横向拉伸或压缩 $ \frac{1}{f'(0)} $ 倍后，总能得到 $ g(x) = e^x $
+
+到这里其实我们可以推得一个常用公式：$ g'(x) = (e^x)' = e^xg'(0) = e^x $
+
+利用这个公式，我们就可以得到
+
+$$
+\begin{align*}
+    f'(x) &= (a^x)' = (e^{x\ln a})' = e^{x\ln a}\ln a = a^x\ln a \\
+    f'(0) &= a^0\ln a = \ln a
+\end{align*}
+$$
+
+从这个推导过程我们可以得到一个经验，对于任意指数函数，我们总是可以做形如 $ a^x = e^{x\ln a} $ 的变换后，利用链式法则求导
+
+## 对数函数求导
+
+含义：形如 $ \ln x $ 的函数，这个函数的底数为 $ e $，我们总是讨论这种情况，其余底数的情况一般不做讨论
+
+公式：$ (\ln x)' = -\frac{1}{x} $
+
+推导过程利用到了刚刚得到的公式 $ (e^x)' = e^x $，如下
+
+假设 $ w = \ln x $，则 $ e^w = x $，故
+
+$$
+\begin{align*}
+    (e^w)' &= e^ww'=1 \\
+    w' &= \frac{1}{e^w} = \frac{1}{e^{\ln x}} = \frac{1}{x}
+\end{align*}
+$$
+
+同样，从这个推导过程我们可以得到另一个经验，对于任意对数函数，我们总是可以假设 $ w = \ln x $，令 $ e^w = x $ 后求导
+
+## $ e $ 的近似估算
+
+利用 $ \lim\limits_{n \to \infty}(1 + \frac{1}{n})^n $，我们可以这么算
+
+$$
+\begin{align*}
+    \lim\limits_{n \to \infty}(1 + \frac{1}{n})^n &= \lim\limits_{n \to \infty}e^{n\ln (1 + \frac{1}{n})} \\
+    &= e^{\lim\limits_{n \to \infty}{n\ln (1 + \frac{1}{n})}} \\
+    &= e^{\lim\limits_{n \to \infty}\frac{\ln (1 + \frac{1}{n})}{\frac{1}{n}}} \\
+    &= e^{\lim\limits_{n \to \infty}\frac{\ln (1 + \frac{1}{n}) - \ln 1}{\frac{1}{n}}} \\
+    &= e^{\ln'(1+x)\big|_{x = 0}} \\
+    &= e^{\frac{1}{1 + x}\big|_{x = 0}} \\
+    &= e \\
+\end{align*}
+$$
+
+也就是说我们可以取较大的 $ n $，代入 $ (1 + \frac{1}{n})^n $ 求得 $ e $ 的近似值
