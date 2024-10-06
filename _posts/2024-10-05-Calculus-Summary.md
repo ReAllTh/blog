@@ -208,7 +208,7 @@ $$
 
 现在只需要知道 $ f'(0) $ 的值即可
 
-为了知道 $ f'(0) $ 的值，我们需要另外一个假设：假设存在一个数 $ e $，使 $ g'(x) = (e^x)'\big|_{x = 0} = 1 $
+为了知道 $ f'(0) $ 的值，我们需要另外一个假设：假设存在一个数 $ e $，使 $ g'(x) = (e^x)'\big\vert_{x = 0} = 1 $
 
 但这里不能随意假设，假设之前我们需要证明 $ e $ 确实存在：
 
@@ -217,11 +217,11 @@ $$
     f(x) &= a^x \\
     f(kx) &= a^{kx} = (a^k)^x \xlongequal{令 b = a^x} b^x\\
     (b^x)' &= [f(kx)]' = kf'(kx) \\
-    (b^x)' \big|_{x=0} &= kf'(0)
+    (b^x)' \big\vert_{x=0} &= kf'(0)
 \end{align*}
 $$
 
-当 $ k = \frac{1}{f'(0)} $ 时，$ (b^x)'\big|_{x=0} = kf'(0) = 1 $，此时 $ b = e $，也就是 e 确实存在，假设成立
+当 $ k = \frac{1}{f'(0)} $ 时，$ (b^x)'\big\vert_{x=0} = kf'(0) = 1 $，此时 $ b = e $，也就是 e 确实存在，假设成立
 
 上面这部分证明过程从几何角度讲，也就是说对于任意的 $ f(x) = a^x $，我们把它横向拉伸或压缩 $ \frac{1}{f'(0)} $ 倍后，总能得到 $ g(x) = e^x $
 
@@ -267,8 +267,8 @@ $$
     &= e^{\lim\limits_{n \to \infty}{n\ln (1 + \frac{1}{n})}} \\
     &= e^{\lim\limits_{n \to \infty}\frac{\ln (1 + \frac{1}{n})}{\frac{1}{n}}} \\
     &= e^{\lim\limits_{n \to \infty}\frac{\ln (1 + \frac{1}{n}) - \ln 1}{\frac{1}{n}}} \\
-    &= e^{\ln'(1+x)\big|_{x = 0}} \\
-    &= e^{\frac{1}{1 + x}\big|_{x = 0}} \\
+    &= e^{\ln'(1+x)\big\vert_{x = 0}} \\
+    &= e^{\frac{1}{1 + x}\big\vert_{x = 0}} \\
     &= e \\
 \end{align*}
 $$
