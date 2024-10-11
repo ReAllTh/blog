@@ -125,7 +125,7 @@ $$
 
 含义：即导数的导数
 
-记号：$ f''(x) = \frac{\mathrm{d}\frac{\mathrm{d}f}{\mathrm{d}x}}{\mathrm{d}x} = \frac{\mathrm{d}}{\mathrm{d}x}\frac{\mathrm{d}f}{\mathrm{d}x} = \frac{\mathrm{d}}{\mathrm{d}x}\frac{\mathrm{d}}{\mathrm{d}x}f = (\frac{\mathrm{d}}{\mathrm{d}x})^2f = \frac{\mathrm{d}^2}{(\mathrm{d}x)^2}f = \frac{\mathrm{d}^2f}{\mathrm{d}x^2} = D^2f$
+记号：$ f^{(2)}(x) = \frac{\mathrm{d}\frac{\mathrm{d}f}{\mathrm{d}x}}{\mathrm{d}x} = \frac{\mathrm{d}}{\mathrm{d}x}\frac{\mathrm{d}f}{\mathrm{d}x} = \frac{\mathrm{d}}{\mathrm{d}x}\frac{\mathrm{d}}{\mathrm{d}x}f = (\frac{\mathrm{d}}{\mathrm{d}x})^2f = \frac{\mathrm{d}^2}{(\mathrm{d}x)^2}f = \frac{\mathrm{d}^2f}{\mathrm{d}x^2} = D^2f$
 
 ### 隐函数求导
 
@@ -312,3 +312,48 @@ $$
 其实，我们可以把这个近似广义化，比如对 $ T_1 = \frac{T_0}{\sqrt{1 - \frac{v^2}{c^2}}} $，当 $ \frac{v^2}{c^2} \to 0 $ 时，$ T_1 \approx T(1 + \frac{v^2}{2c^2}) $
 
 > 在这个例子里面，我们把 $ \frac{v^2}{c^2} $ 当作一个整体看待
+
+### 二阶近似
+
+表达式：当 $ x \to x_0$ 时，$ f(x) \approx f(x_0) + f'(x_0)(x - x_0) + \frac{f^{(2)}(x)}{2}(x- x_0)^2 $
+
+> 对于 $ \frac{1}{2} $ 从何而来，可以把 $ f(x) = ax^2 + bx + c $ 在 $ x = 0 $ 附近的二阶近似写出来验证，即 $ f(x) \approx f(0) + f'(0)(x - 0) + \frac{f^{(2)}(0)}{2}(x - 0)^2 = c + bx + \frac{1}{2} \times 2ax^2 = ax^2 + bx + c $
+
+几何意义：最逼近 $ f(x) $ 在 $ x_0 $ 处的抛物线
+
+> 其实就是线性近似的基础上再进行修正，使得近似结果更加精确，我们只在线性近似精度不够，无法解决问题的时候才会用二阶近似
+
+例如：$ \ln (1 + x) $ 在 $ x \to 0 $ 时，二阶近似于 $ x - \frac{x^2}{2} $，所以 $ \ln 1.1 = \ln (1 + 0.1) \approx 0.1 + 0.5 \times 0.01 = 0.095 $，这个结果比线性近似得到的 $ 0.1 $ 更加精确
+
+常见的二阶近似（$ x = 0 $ 处成立）
+
+$$
+\begin{align*}
+    &\sin x \approx x \\
+    &\cos x \approx 1 - \frac{1}{2}x^2 \\
+    &e^x \approx 1 + x + \frac{1}{2}x^2 \\
+    &\ln(1 + x) \approx x - \frac{1}{2}x^2 \\
+    &(1 + x)^r \approx 1 + rx + \frac{r(r-1)}{2}x^2 \\
+\end{align*}
+$$
+
+### 曲线构图
+
+知道 $ f'(x) $ 和 $ f^{(2)}(x) $ 即可
+
+$ f'(x) > 0 (<0) $ 时，$ f(x) $ 单调递增（递减），函数在坐标系是上升（下降）的
+
+$ f^{(2)}(x) > 0 (<0) $ 时，$ f'(x) $ 单调递增（递减），函数在坐标系是凹（凸）的
+
+![turning points](../assets/img/turning_points.png)
+
+$ f'(x) $ 符号发生变化的点，即图中 $ x = -1 $ 和 $ x = 1 $ 这两个点叫做极值点（Turning Point），$ f(-1) $ 和 $ f(1) $ 为极值（Turning Value）
+
+$ f'(x_0) = 0 $ 时，$ x_0 $ 为函数的驻点（Critical Point），$ f(x_0) $ 为驻点值（Critical Value）
+
+> （如果 $ f'(x) $ 连续，或者说图像是光滑的，没有折角，折点不存在导数）极值点一定是驻点，驻点不一定就是极值点，比如 $ x^3 $ 在 $ x = 0 $ 处，$ f'(0) = 0 $，但该点两侧 $ f'(x) $ 符号没有发生改变，即 $ x = 0 $ 是驻点，但不是极值点
+
+$ f^{(2)}(x_0) $ 的符号发生变化的点，即 $ (x_0, f(x_0)) $，被称为拐点（Inflection Point）
+
+> 极值点和拐点的一个细节上的不同在于，极值点是一个一维点，而拐点是一个二维点
+> 另外，和极值点、驻点类似的是，当 $ f^{(2)}(x) = 0 $ 时，$ (x_0, f(x_0)) $ 不一定就是拐点，因为这个点两侧的 $ f^{(2)}(x) $ 的符号可能并不会发生改变，比如 $ x^4 $
