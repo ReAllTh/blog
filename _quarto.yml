@@ -1,0 +1,25 @@
+project:
+  type: website
+  title: "KaisMemo"
+
+website:
+  favicon: favicon.ico
+  site-url: https://da.kaismemo.com
+  navbar:
+    search: true
+
+format:
+  html:
+    theme:
+      - simplex
+      - brand
+    css: styles.css
+    max-width: 850px
+    code-copy: true
+    code-fold: true
+    toc: true
+    toc-depth: 3
+    toc-location: right
+    toc-title: "目录"
+    toc-expand: true
+    smooth-scroll: true

@@ -1,0 +1,12 @@
+/* css styles */
+body {
+  text-rendering: optimizeLegibility;
+}
+
+/* 针对所有代码单元格输出内容的圆角处理 */
+.cell-output-display,
+.cell-output-display :is(video, img, iframe) {
+    border-radius: var(--bs-border-radius);
+    overflow: hidden;
+    border: none;
+}

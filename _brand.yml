@@ -1,0 +1,15 @@
+meta:
+  name: KaisMemo
+
+color:
+  primary: "#34495e"
+  background: "#fcfaf2"
+  foreground: "#2c3e50"
+
+typography:
+  fonts:
+    - family: "Inter"
+      source: google
+  base:
+    family: "Inter"
+    line-height: 1.8
