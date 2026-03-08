@@ -5,6 +5,9 @@
 /.quarto/
 /_site/
 
+# Quarto 临时文件
+**/*.quarto_ipynb
+
 # Python 虚拟环境 (uv/pip)
 /.venv/
 
