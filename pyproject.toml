@@ -4,6 +4,7 @@ version = "0.1.0"
 description = "Add your description here"
 requires-python = ">=3.14"
 dependencies = [
+    "chardet==7.0.1",
     "ffmpeg==1.4",
     "jupyter==1.1.1",
     "matplotlib==3.10.8",
