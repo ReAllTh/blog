@@ -16,7 +16,7 @@ format:
     css: styles.css
     max-width: 850px
     code-copy: true
-    code-fold: true
+    code-fold: false
     toc: true
     toc-depth: 3
     toc-location: right
