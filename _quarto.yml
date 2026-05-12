@@ -5,7 +5,7 @@ project:
 
 website:
   favicon: favicon.ico
-  site-url: https://da.kaismemo.com
+  site-url: https://yibo.dev
   navbar:
     search: true
 
