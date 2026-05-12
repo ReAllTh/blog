@@ -1,7 +1,7 @@
 project:
   type: website
   output-dir: _site
-  title: "KaisMemo"
+  title: "Yibo Z."
 
 website:
   favicon: favicon.ico
