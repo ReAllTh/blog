@@ -1,11 +1,18 @@
 name: Deploy Quarto Blog
 on:
   push:
-    branches: [ main ]
+    branches: [main]
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -16,15 +23,25 @@ jobs:
           enable-cache: true
 
       - name: Set up Python
-        run: uv python install 3.14
+        run: uv python install 3.13
 
       - name: Set up Quarto
         uses: quarto-dev/quarto-actions/setup@v2
+        with:
+          version: 1.6.44
 
       - name: Render Quarto Project
         run: |
           uv sync
           uv run quarto render
+
+      - name: Check build output
+        run: |
+          if [ ! -d "_site" ]; then
+            echo "❌ _site directory not found!"
+            exit 1
+          fi
+          echo "✅ Build successful, $(find _site -type f | wc -l) files ready to deploy"
 
       - name: Deploy to Cloudflare Pages
         uses: cloudflare/pages-action@v1
@@ -33,3 +50,4 @@ jobs:
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           projectName: blog
           directory: _site
+          branch: main
